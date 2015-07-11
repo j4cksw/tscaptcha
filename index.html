@@ -1,23 +1,26 @@
 <html>
+
 <head>
     <script src="js/src/Captcha.js"></script>
-    <script src="js/src/CaptchaFactory.js"/></script>
-    <script src="js/src/RandomNumericGenerator.js"/></script>
+    <script src="js/src/CaptchaFactory.js" /></script>
+    <script src="js/src/RandomNumericGenerator.js" /></script>
+    <script src="js/src/RandomNumberWordGenerator.js" /></script>
 </head>
+
 <body onload="( function(){
     var factory = new CaptchaFactory();
     factory.setFirstOperandGenerator(new RandomNumericGenerator());
-    factory.setSecondOperandGenerator(new RandomNumericGenerator());
+    factory.setSecondOperandGenerator(new RandomNumberWordGenerator());
 
     var captcha = factory.generate();
 
     document.getElementById('first').innerHTML = captcha.getFirstOperand();
     document.getElementById('second').innerHTML = captcha.getSecondOperand();
 })();">
-<h1>
+    <h1>
         <span id="first"></span> +
         <span id="second"></span> =?
-</h1>
+    </h1>
 
 </body>
 
