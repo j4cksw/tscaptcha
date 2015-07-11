@@ -2,12 +2,24 @@
 /// <reference path='../../ts/src/CaptchaFactory.ts' />
 
 describe('captcha', function() {
-    it('first operand should be numerical string', function() {
-        var captchaFactory = new CaptchaFactory();
 
-        var randomNumericGenerator = jasmine.createSpyObj('RandomNumericGenerator', ['generate']);
-        captchaFactory.setFirstOperandGenerator(randomNumericGenerator)
-        
+    var captchaFactory;
+    var firstOperandGenerator;
+    var secondOperandGenerator;
+
+    beforeEach(function() {
+        captchaFactory = new CaptchaFactory();
+
+        firstOperandGenerator = jasmine.createSpyObj('RandomNumericGenerator', ['generate']);
+        firstOperandGenerator.generate.and.returnValue('1');
+        captchaFactory.setFirstOperandGenerator(firstOperandGenerator);
+
+        secondOperandGenerator = jasmine.createSpyObj('RandomNumberWordGenerator', ['generate']);
+        secondOperandGenerator.generate.and.returnValue('one');
+        captchaFactory.setSecondOperandGenerator(secondOperandGenerator);
+    });
+
+    it('first operand should be numerical string', function() {
         var captcha = captchaFactory.generate();
 
         expect(captcha.getFirstOperand()).toBe('1');
@@ -15,13 +27,14 @@ describe('captcha', function() {
     });
 
     it('random generate numeric string for first operand', function() {
-        var captchaFactory = new CaptchaFactory();
-
-        var randomNumericGenerator = jasmine.createSpyObj('RandomNumericGenerator', ['generate']);
-        captchaFactory.setFirstOperandGenerator(randomNumericGenerator)
-
         captchaFactory.generate();
 
-        expect(randomNumericGenerator.generate).toHaveBeenCalled();
+        expect(firstOperandGenerator.generate).toHaveBeenCalled();
+    });
+
+    it('random generate number word for second operand', function() {
+        captchaFactory.generate();
+
+        expect(secondOperandGenerator.generate).toHaveBeenCalled();
     });
 });

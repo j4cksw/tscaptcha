@@ -23,11 +23,13 @@ module.exports = function(grunt) {
             unit: {
                 configFile: 'karma.conf.js'
             }
-        }
+        },
+        clean: ['js']
     });
 
     grunt.loadNpmTasks('grunt-typescript');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('test', ['typescript', 'karma']);
+    grunt.registerTask('test', ['clean', 'typescript', 'karma']);
 };

@@ -1,11 +1,17 @@
 class Captcha {
-    new(){};
+    firstOperand: string;
+    secondOperand: string;
+
+    constructor(first: string, second: string){
+        this.firstOperand = first;
+        this.secondOperand = second;
+    };
 
     getFirstOperand(){
-        return '1';
+        return this.firstOperand;
     };
 
     getSecondOperand(){
-        return 'one';
+        return this.secondOperand;
     };
 }
