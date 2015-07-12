@@ -5,21 +5,40 @@
     <script src="js/src/CaptchaFactory.js" /></script>
     <script src="js/src/RandomNumericGenerator.js" /></script>
     <script src="js/src/RandomNumberWordGenerator.js" /></script>
+    <script>
+        var factory;
+        var captcha;
+
+        function onBodyLoaded() {
+            factory = new CaptchaFactory();
+            factory.setFirstOperandGenerator(new RandomNumericGenerator());
+            factory.setSecondOperandGenerator(new RandomNumberWordGenerator());
+
+            captcha = factory.generate();
+
+            document.getElementById('first').innerHTML = captcha.getFirstOperand();
+            document.getElementById('second').innerHTML = captcha.getSecondOperand();
+        }
+
+        function onSubmitAnswer() {
+            var validator = new CaptchaValidator();
+            var answer = document.getElementById('answer').value;
+            var result = validator.validate(captcha, answer);
+            if (result) {
+                window.location.asign('success.html');
+            } else {
+                location.reload();
+            }
+        }
+    </script>
 </head>
 
-<body onload="( function(){
-    var factory = new CaptchaFactory();
-    factory.setFirstOperandGenerator(new RandomNumericGenerator());
-    factory.setSecondOperandGenerator(new RandomNumberWordGenerator());
-
-    var captcha = factory.generate();
-
-    document.getElementById('first').innerHTML = captcha.getFirstOperand();
-    document.getElementById('second').innerHTML = captcha.getSecondOperand();
-})();">
+<body onload="onBodyLoaded()">
     <h1>
         <span id="first"></span> +
         <span id="second"></span> =?
+        <input type="text" id="answer" />
+        <button onclick="onSubmitAnswer()">OK</button>
     </h1>
 
 </body>
