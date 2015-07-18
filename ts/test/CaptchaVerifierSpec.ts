@@ -17,10 +17,8 @@ describe('CaptchaVerifier', () => {
         ];
 
         passingCases.forEach(function(testData) {
-            it('return true when verify pass', () => {
+            it('should return true when verify pass for ' + JSON.stringify(testData.captcha), () => {
                 var verifier = new CaptchaVerifier();
-
-                //var sampleCaptcha = new Captcha('1', 'one');
 
                 var result = verifier.verify(testData.captcha, testData.answer);
 
@@ -40,11 +38,16 @@ describe('CaptchaVerifier', () => {
                 captcha: new Captcha('2', 'two'),
                 answer: 8,
                 expected: false
+            },
+            {
+                captcha: new Captcha('3', 'two'),
+                answer: 2,
+                expected: false
             }
         ]
 
         failingCases.forEach(function(testData) {
-            it('return false when verify fail', () => {
+            it('should return false when verify fail for ' + JSON.stringify(testData.captcha), () => {
                 var verifier = new CaptchaVerifier();
 
                 var result = verifier.verify(testData.captcha, testData.answer);
