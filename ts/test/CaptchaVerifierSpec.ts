@@ -13,7 +13,7 @@ describe('CaptchaVerifier', () => {
                 captcha: new Captcha('2', 'two'),
                 answer: 4,
                 expected: true
-            }
+            },
         ];
 
         passingCases.forEach(function(testData) {
