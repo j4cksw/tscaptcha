@@ -1,7 +1,13 @@
 class RandomNumberWordGenerator implements OperandGenerator{
+    randomizer:Randomizer
+
     generate(){
-        var answers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-        //return answers[super.generate()];
-        return new CaptchaOperand(0, 'x');
+        var answers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+        var randomized = this.randomizer.next()
+        return new CaptchaOperand(randomized, answers[randomized]);
+    }
+
+    setRandomizer(randomizer:Randomizer){
+        this.randomizer = randomizer;
     }
 }
