@@ -2,17 +2,19 @@
 
 <head>
     <script src="js/src/Captcha.js"></script>
-    <script src="js/src/CaptchaFactory.js" /></script>
-    <script src="js/src/RandomNumericGenerator.js" /></script>
-    <script src="js/src/RandomNumberWordGenerator.js" /></script>
+    <script src="js/src/CaptchaOperand.js"></script>
+    <script src="js/src/CaptchaFactory.js"></script>
+    <script src="js/src/NumberRandomizer.js"></script>
+    <script src="js/src/RandomNumericGenerator.js"></script>
+    <script src="js/src/RandomNumberWordGenerator.js"></script>
     <script>
         var factory;
         var captcha;
 
         function onBodyLoaded() {
             factory = new CaptchaFactory();
-            factory.setFirstOperandGenerator(new RandomNumericGenerator());
-            factory.setSecondOperandGenerator(new RandomNumberWordGenerator());
+            factory.setFirstOperandGenerator(RandomNumericGenerator.createWithDefaultRandomizer());
+            factory.setSecondOperandGenerator(RandomNumberWordGenerator.createWithDefaultRandomizer());
 
             captcha = factory.generate();
 

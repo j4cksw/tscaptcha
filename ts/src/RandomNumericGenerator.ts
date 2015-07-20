@@ -12,4 +12,10 @@ class RandomNumericGenerator {
     setRandomizer(randomizer:Randomizer){
         this.randomizer = randomizer;
     }
+
+    static createWithDefaultRandomizer() {
+        var instance = new RandomNumericGenerator()
+        instance.setRandomizer(new NumberRandomizer())
+        return instance
+    }
 }

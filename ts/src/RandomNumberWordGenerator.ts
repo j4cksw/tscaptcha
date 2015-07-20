@@ -10,4 +10,10 @@ class RandomNumberWordGenerator implements OperandGenerator{
     setRandomizer(randomizer:Randomizer){
         this.randomizer = randomizer;
     }
+
+    static createWithDefaultRandomizer() {
+        var instance = new RandomNumberWordGenerator()
+        instance.setRandomizer(new NumberRandomizer())
+        return instance
+    }
 }
