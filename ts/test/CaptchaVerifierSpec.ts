@@ -5,12 +5,12 @@ describe('CaptchaVerifier', () => {
     describe('Passing', () => {
         var passingCases = [
             {
-                captcha: new Captcha('1', 'one'),
+                captcha: new Captcha('1', 'one', 2),
                 answer: 2,
                 expected: true
             },
             {
-                captcha: new Captcha('2', 'two'),
+                captcha: new Captcha('2', 'two', 2),
                 answer: 4,
                 expected: true
             },
@@ -30,17 +30,17 @@ describe('CaptchaVerifier', () => {
     describe('Failing', () => {
         var failingCases = [
             {
-                captcha: new Captcha('1', 'one'),
+                captcha: new Captcha('1', 'one', 1),
                 answer: 1,
                 expected: false
             },
             {
-                captcha: new Captcha('2', 'two'),
+                captcha: new Captcha('2', 'two', 4),
                 answer: 8,
                 expected: false
             },
             {
-                captcha: new Captcha('3', 'two'),
+                captcha: new Captcha('3', 'two', 5),
                 answer: 2,
                 expected: false
             }

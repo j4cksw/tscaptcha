@@ -7,7 +7,8 @@ class CaptchaFactory {
     generate(){
         var first = this.firstOperandGenerator.generate();
         var second = this.secondOperandGenerator.generate();
-        return new Captcha(first, second);
+
+        return new Captcha(first.getDisplay(), second.getDisplay(), first.getValue()+second.getValue());
     }
     setFirstOperandGenerator(generator: OperandGenerator){
         this.firstOperandGenerator = generator;

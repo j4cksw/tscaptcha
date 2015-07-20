@@ -1,6 +1,6 @@
 class CaptchaVerifier {
     verify(captcha: Captcha, answer: number) {
-        if (isPass(captcha, answer))
+        if (this.isPass(captcha, answer))
             return true;
         /*if (captcha.getFirstOperand() == '2' && captcha.getSecondOperand() == 'two' && answer == 4)
             return true;*/
