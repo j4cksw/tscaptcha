@@ -6,8 +6,9 @@ describe('NumberRandomizer', () => {
 
         var allowedNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-        expect(allowedNumbers.indexOf(numberRandomizer.next())).toBeGreaterThan(-1)
-        expect(numberRandomizer.next()).toBeLessThan(10)
+        for(var time=0; time<10; time++) {
+            expect(allowedNumbers.indexOf(numberRandomizer.next())).toBeGreaterThan(-1)
+        }
     })
 
     it('should evaluate Math.random', () => {
