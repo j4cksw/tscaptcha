@@ -7,7 +7,7 @@
     <script src="js/src/NumberRandomizer.js"></script>
     <script src="js/src/RandomNumericGenerator.js"></script>
     <script src="js/src/RandomNumberWordGenerator.js"></script>
-    <script src="js/src/CaptchaVerifier"></script>
+    <script src="js/src/CaptchaVerifier.js"></script>
     <script>
         var factory;
         var captcha;
@@ -26,9 +26,9 @@
         function onSubmitAnswer() {
             var verifier = new CaptchaVerifier();
             var answer = document.getElementById('answer').value;
-            var result = verifier.validate(captcha, answer);
+            var result = verifier.verify(captcha, answer);
             if (result) {
-                window.location.asign('success.html');
+                window.location = 'success.html';
             } else {
                 location.reload();
             }
