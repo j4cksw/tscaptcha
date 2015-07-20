@@ -10,7 +10,7 @@ describe('CaptchaVerifier', () => {
                 expected: true
             },
             {
-                captcha: new Captcha('2', 'two', 2),
+                captcha: new Captcha('2', 'two', 4),
                 answer: 4,
                 expected: true
             },
@@ -30,7 +30,7 @@ describe('CaptchaVerifier', () => {
     describe('Failing', () => {
         var failingCases = [
             {
-                captcha: new Captcha('1', 'one', 1),
+                captcha: new Captcha('1', 'one', 2),
                 answer: 1,
                 expected: false
             },
