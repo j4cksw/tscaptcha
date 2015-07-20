@@ -1,0 +1,3 @@
+interface Randomizer{
+    next():number;
+}
