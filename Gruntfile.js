@@ -4,7 +4,7 @@ module.exports = function(grunt) {
         typescript: {
             source: {
                 src: ['ts/src/**/*.ts'],
-                dest: 'js/src',
+                dest: 'js/src/tscaptcha.js',
                 options: {
                     module: 'amd', //or commonjs
                     target: 'es5',
